@@ -1,0 +1,4 @@
+{
+  "tailwindCSS.experimental.configFile": "apps/astro-host/src/styles/global.css",
+  "tailwindCSS.lint.invalidApply": "ignore"
+}

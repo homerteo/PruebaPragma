@@ -1,0 +1,13 @@
+/* apps/astro-host/src/styles/global.css */
+@import "tailwindcss";
+
+@source "../../../../libs/ui-react/src/**/*.{js,ts,jsx,tsx}";
+
+@theme {
+  --color-primary: #50b940;
+  --color-title: #333333;
+  --color-gray300: #757575;
+  --color-gray400: #545454;
+  --color-green200: #e2f2e7;
+  --shadow-header: 0px 4px 8px 0px rgba(5, 5, 5, 0.08);
+}

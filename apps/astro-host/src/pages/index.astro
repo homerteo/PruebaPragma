@@ -1,5 +1,23 @@
 ---
+import '../styles/global.css'; // <--- Importación de Tailwind v4
+import { Header } from '@bhd-test/ui-react';
+import type { MenuItem } from '@bhd-test/shared-domain';
 
+export const menuItems: MenuItem[] = [
+	{
+		id: 'Item1',
+		label: 'Item 1',
+		isExternal: false,
+		subItems: [
+	{
+		id: 'SubItem1',
+		label: 'SuvItem 1',
+		url: '/item1',
+		isExternal: false,
+	}
+]
+	}
+]
 ---
 
 <html lang="en">
@@ -12,6 +30,7 @@
 		<title>Astro</title>
 	</head>
 	<body>
+		<Header client:load logoUrl='https://asset.bhdpb.com.do/strapi-uploads/assets/logo_bhd_e9f5ce0500_9ac5550cf3.svg' menuItems={menuItems} />
 		<h1>Astro</h1>
 	</body>
 </html>
