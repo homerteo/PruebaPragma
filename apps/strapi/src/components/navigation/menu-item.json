@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_navigation_menu_items",
+  "info": {
+    "displayName": "menu-link",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string"
+    },
+    "isExternal": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "config": {}
+}

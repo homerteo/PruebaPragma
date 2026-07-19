@@ -1,11 +1,13 @@
 ---
 import '../styles/global.css';
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<div id="angular-container" class="page__contact h-screen">
-  <bhd-contact-form></bhd-contact-form>
-</div>
+<Layout>
+  <div id="angular-container" class="page__contact h-screen">
+    <bhd-contact-form></bhd-contact-form>
+  </div>
+</Layout>
 
 <script>
   import '@angular/compiler';

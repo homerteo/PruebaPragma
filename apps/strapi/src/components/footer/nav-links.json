@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_footer_nav_links",
+  "info": {
+    "displayName": "navLinks",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_navigation_menu_dropdowns",
+  "info": {
+    "displayName": "menu-dropdown",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string"
+    },
+    "isExternal": {
+      "type": "boolean",
+      "default": false
+    },
+    "subItems": {
+      "type": "component",
+      "component": "navigation.menu-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

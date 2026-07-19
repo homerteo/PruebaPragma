@@ -1,0 +1,90 @@
+---
+import { Image } from "astro:assets";
+import type { Footer } from "@bhd-test/data-access";
+
+interface Props {
+  data: Footer;
+}
+
+const { data } = Astro.props;
+---
+
+<footer class="mx-auto w-full px-6 md:px-8 lg:px-10 footer bg-secondary relative text-white mt-auto" data-astro-cid="2nzlnoch">
+  <div class="px-50 py-24">
+  <div class="mb-10 flex justify-center md:mb-12">
+    <Image
+      src={`http://localhost:1337${data.logo.url}`}
+      alt="Logo BHD Puesto de Bolsa"
+      width={140}
+      height={45}
+      loading="lazy"
+      class="h-auto w-[140px] max-w-full object-contain"
+    />
+  </div>
+
+  <!-- Descripción -->
+  <div class="mx-auto mb-12 max-w-[840px] text-center md:mb-14">
+    <p class="footer__description text-sm font-medium leading-7 md:text-base">
+      BHD Puesto de Bolsa. Afiliado a la Bolsa y Mercado de Valores de la República Dominicana. Todos los derechos reservados.
+      <br />
+      Calle Luis F. Thomén esq. Av. Winston Churchill, Torre BHD, 9no. piso, Santo Domingo, República Dominicana.
+      <br />
+      Teléfono: 809-243-3600.
+    </p>
+  </div>
+
+  <div class="mb-10 flex justify-center md:mb-12">
+    <div class="footer-social flex flex-wrap items-center justify-center gap-8 md:gap-12">
+      {data.socialLinks.map(({ label, href, icon }) => (
+        <a
+          class="footer-social__link inline-flex h-12 w-12 items-center justify-center text-white transition-opacity duration-200 hover:opacity-75"
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={label}
+        >
+          <div class="text-white mb-0 h-8 w-8">
+            <img src={`http://localhost:1337${icon.url}`}/>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <div class="mb-10 border-t border-white/80 md:mb-12"></div>
+
+  <div class="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+    
+    <nav class="grid flex-1 grid-cols-2 gap-x-8 gap-y-4 lg:max-w-[620px]" aria-label="Enlaces del footer">
+      {data.navLinks.map((link) => (
+          <a
+            class="text-sm font-medium leading-6 underline underline-offset-4 transition-opacity duration-200 hover:opacity-75"
+            href={link.href}
+            target="_self"
+          >
+            {link.label}
+          </a>
+      ))}
+    </nav>
+
+    <div class="flex flex-wrap items-end gap-4 self-start lg:min-w-fit lg:justify-end lg:self-auto">
+      {data.certifications.map(({ href, image, alt, width, heigth }) => {
+        const imageWidth = width ?? 134;
+        const imageHeight = heigth ?? 167;
+        return (
+          <a href={href} target="_blank" rel="noopener noreferrer">
+            <Image
+              src={`http://localhost:1337${image.url}`}
+              alt={alt}
+              width={imageWidth}
+              height={imageHeight}
+              loading="lazy"
+              class="h-auto w-[74px] object-contain"
+            />
+          </a>
+        );
+      })}
+    </div>
+  </div>
+  </div>
+</footer>

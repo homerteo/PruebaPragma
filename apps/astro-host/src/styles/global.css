@@ -29,7 +29,7 @@
   --color-thankYou: #f2fef3;
 
   /* ─── Fonts ─── */
-  --font-title: "Trust Sans Alt", sans-serif;
+  --font-title: "Inter", "Helvetica Neue", Arial, sans-serif;
   --font-body: "Noto Sans", sans-serif;
 
   /* ─── Spacing ─── */
@@ -62,40 +62,6 @@
    ============================================================ */
 
 @layer base {
-  /* ─── Font-face declarations ─── */
-  @font-face {
-    font-family: "Trust Sans Alt";
-    font-style: normal;
-    font-weight: 300;
-    src:
-      url(/_astro/trust-sans-alt-regular.glA-SrMk.ttf) format("truetype"),
-      url(/_astro/trust-sans-alt-regular.KuS2_WUS.woff) format("woff"),
-      url(/_astro/trust-sans-alt-regular.CukFHxgG.woff2) format("woff2");
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Trust Sans Alt";
-    font-style: normal;
-    font-weight: 400;
-    src:
-      url(/_astro/trust-sans-alt-medium.CyCcBH9r.ttf) format("truetype"),
-      url(/_astro/trust-sans-alt-medium.DSNsl-V_.woff) format("woff"),
-      url(/_astro/trust-sans-alt-medium.BCQmBEVU.woff2) format("woff2");
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Trust Sans Alt";
-    font-style: normal;
-    font-weight: 700;
-    src:
-      url(/_astro/trust-sans-alt-bold.D_IQgU2j.ttf) format("truetype"),
-      url(/_astro/trust-sans-alt-bold.DwEsIUvX.woff) format("woff"),
-      url(/_astro/trust-sans-alt-bold.kfYqzfAT.woff2) format("woff2");
-    font-display: swap;
-  }
-
   @font-face {
     font-family: "Noto Sans";
     font-style: normal;

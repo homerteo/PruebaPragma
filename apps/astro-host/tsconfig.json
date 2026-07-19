@@ -2,7 +2,8 @@
   "extends": ["astro/tsconfigs/strict", "../../tsconfig.base.json"],
   "include": [
     ".astro/types.d.ts",
-    "**/*"
+    "**/*",
+    "env.d.ts"
   ],
   "exclude": [
     "dist"
