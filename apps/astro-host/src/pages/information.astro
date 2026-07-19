@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+
+---
+
+<div id="angular-container" class="page__contact h-screen">
+  <bhd-contact-form></bhd-contact-form>
+</div>
+
+<script>
+  import '@angular/compiler';
+</script>
+
+<script type="module">
+  import { createApplication } from '@angular/platform-browser';
+  import { registerWebComponent } from '../../../../dist/libs/ui-angular/fesm2022/bhd-test-ui-angular.mjs';
+
+  (async () => {
+    const app = await createApplication({ providers: [] });
+    registerWebComponent(app.injector);
+  })();
+</script>
+
+<style>
+  .page__contact {
+    margin-bottom: 5rem;
+    margin-top: 3.5rem;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    justify-content: center;
+  }
+  @media (min-width: 768px) {
+    .page__contact {
+      max-width: 620px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .page__contact {
+      max-width: 752px;
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+  @media (min-width: 1280px) {
+    .page__contact {
+      margin-top: 5rem;
+    }
+  }
+  @media (min-width: 1536px) {
+    .page__contact {
+      max-width: 944px;
+    }
+  }
+</style>
