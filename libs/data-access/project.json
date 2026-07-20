@@ -13,7 +13,8 @@
         "main": "libs/data-access/src/index.ts",
         "tsConfig": "libs/data-access/tsconfig.lib.json",
         "assets": ["libs/data-access/*.md"]
-      }
+      },
+      "dependsOn": ["shared-domain:build"]
     }
   }
 }

@@ -1,5 +1,5 @@
-import { Navigation, FooterResponse } from './models';
-
+import { Navigation, FooterResponse, Page } from '@bhd-test/shared-domain';
+ 
 export const strapiService = {
   getNavbar: async (baseUrl: string, token: string): Promise<Navigation> => {
     const response = await fetch(`${baseUrl}/api/navigation?populate=items.subItems`, {
@@ -39,6 +39,16 @@ export const strapiService = {
 
     const json = await response.json();
     return json.data;
+  },
+  getPageBySlug: async (baseUrl: string, token: string, slug: string): Promise<Page> => {
+    const url = `${baseUrl}/api/pages?filters[slug][$eq]=${slug}&populate=*`;
+    
+    const response = await fetch(url, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    
+    const json = await response.json();
+    return json.data[0];
   }
 };
 

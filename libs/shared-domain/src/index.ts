@@ -1,2 +1,2 @@
-export * from './strapi-dtos.ts';
-export * from './models.ts';
+export * from './strapi-dtos';
+export * from './models';

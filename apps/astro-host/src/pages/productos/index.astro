@@ -1,0 +1,18 @@
+---
+import { strapiService } from '@bhd-test/data-access';
+import Layout from '../../layouts/Layout.astro';
+
+const { slug, subslug } = Astro.params;
+const fullSlug = `${slug}/${subslug}`; // Construimos el path completo
+
+const baseUrl = import.meta.env.STRAPI_API_URL;
+const token = import.meta.env.STRAPI_API_TOKEN;
+
+// Ahora buscas por el slug completo que incluye la jerarquía
+const page = await strapiService.getPageBySlug(baseUrl, token, fullSlug);
+---
+
+<Layout title={page.title}>
+  <h1>{page.title}</h1>
+  {/* Render de contenido */}
+</Layout>

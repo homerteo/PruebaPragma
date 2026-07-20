@@ -90,3 +90,16 @@ export interface StrapiImage {
   width?: number;
   height?: number;
 }
+
+export interface Page {
+  id: string | number;
+  title: string;
+  slug: string;
+  content: unknown;
+  seo?: SeoComponent;
+}
+
+export interface FooterResponse {
+  name: string;
+  Footer: Footer[];
+}

@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import type { Footer } from "@bhd-test/data-access";
+import type { Footer } from "@bhd-test/shared-domain";
 
 interface Props {
   data: Footer;
@@ -44,7 +44,7 @@ const { data } = Astro.props;
           aria-label={label}
         >
           <div class="text-white mb-0 h-8 w-8">
-            <img src={`http://localhost:1337${icon.url}`}/>
+            <img src={`http://localhost:1337${icon.url}`} class="fill-white stroke-white"/>
           </div>
         </a>
       ))}

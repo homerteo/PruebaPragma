@@ -59,3 +59,19 @@ export interface FooterResponse {
   name: string;
   Footer: Footer[];
 }
+
+export interface SeoComponent {
+  id: number;
+  metaTitle: string;
+  metaDescription: string;
+  metaImage?: { data: { attributes: { url: string } } };
+  canonicalUrl: string;
+}
+
+export interface Page {
+  id: string | number;
+  title: string;
+  slug: string;
+  content: unknown;
+  seo?: SeoComponent;
+}

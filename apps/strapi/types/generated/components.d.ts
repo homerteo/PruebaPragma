@@ -55,7 +55,7 @@ export interface FooterSocialLinks extends Struct.ComponentSchema {
   };
   attributes: {
     href: Schema.Attribute.String & Schema.Attribute.Required;
-    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    icon: Schema.Attribute.Media<'images' | 'files'>;
     label: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
