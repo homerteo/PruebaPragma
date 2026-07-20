@@ -1,0 +1,77 @@
+---
+/* @jsxImportSource astro */
+import type { StrapiImage } from '@bhd-test/shared-domain';
+
+
+export interface HeroSection {
+  title: string;
+  description: string;
+  image: StrapiImage;
+  buttonText?: string;
+  buttonUrl?: string;
+}
+
+interface Props {
+  data: HeroSection;
+}
+
+const { data } = Astro.props;
+
+const {
+  title,
+  description,
+  image,
+  buttonText = 'Invierte con nosotros',
+  buttonUrl = '/hazte-cliente',
+} = data;
+
+const imageUrl = image.url.startsWith('http')
+  ? image.url
+  : `${import.meta.env.STRAPI_URL || 'http://localhost:1337'}${image.url}`;
+---
+
+<section>
+  <div class="grid gap-6 lg:grid-cols-2">
+    <div class="lg:order-2">
+      <img
+        src={imageUrl}
+        alt={image.alternativeText || title}
+        width={image.width || 656}
+        height={image.height || 374}
+        loading="eager"
+        class="h-auto w-full object-cover"
+        style="display: block;"
+      />
+    </div>
+    <div class="flex items-center justify-center px-4 md:px-0 lg:order-1">
+      <div class="w-full text-center lg:text-left">
+        <div class="hero-cms-content">
+          <h2
+            class="text-base sm:text-2xl font-medium text-gray-500 text-2xl lg:text-3xl font-bold leading-9"
+          >
+            {title}
+          </h2>
+          {
+            description && (
+              <p class="mt-4 text-gray-600 text-base leading-relaxed">
+                {description}
+              </p>
+            )
+          }
+        </div>
+
+        <div class="mt-6 flex justify-center lg:justify-start">
+          <div class="flex w-full justify-center lg:justify-start">
+            <button
+              type="button"
+              class="px-6 py-3 rounded-lg bg-green-600 text-white font-bold whitespace-nowrap hover:bg-green-700 transition-colors"
+              onclick={`location.href='${buttonUrl}'`}
+            >
+              {buttonText}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,7 +1,43 @@
 ---
+import { strapiService } from '@bhd-test/data-access';
+import type { CardSection as CardSectionData, Page } from '@bhd-test/shared-domain';
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import CardSection from '../components/CardSection.astro';
+const baseUrl = import.meta.env.STRAPI_API_URL;
+const token = import.meta.env.STRAPI_API_TOKEN;
+
+const homePage = (await strapiService.getHome(baseUrl, token)) as Page;
+console.log(JSON.stringify(homePage))
+const content = homePage.content[0];
+const heroSection = content?.heroSection;
+const heroDescription = Array.isArray(heroSection?.description)
+	? heroSection.description
+	.flatMap((block: unknown) =>
+				typeof block === 'object' && block !== null && 'children' in block
+					? (block.children as Array<{ text?: string }>).map(({ text }) => text ?? '')
+					: [],
+			)
+			.join('')
+	: '';
+const heroImage = heroSection?.image;
+const hero = heroSection && heroImage
+	? {
+			title: heroSection.title,
+			description: heroDescription,
+			image: heroImage,
+		}
+	: undefined;
+const cardSections: CardSectionData[] = content?.cardSection ?? [];
 ---
 
 <Layout>
-
+	{hero && <Hero data={hero} />}
+	{
+		cardSections.map((section) => (
+			<div class="mx-auto mt-16 w-full max-w-7xl px-4 md:px-8 lg:mt-24 lg:px-10">
+				<CardSection {...section} />
+			</div>
+		))
+	}
 </Layout>

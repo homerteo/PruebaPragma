@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_views_contents",
+  "info": {
+    "displayName": "content",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "heroSection": {
+      "type": "component",
+      "component": "views.hero-section",
+      "repeatable": false
+    },
+    "cardSection": {
+      "type": "component",
+      "component": "views.card-section",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

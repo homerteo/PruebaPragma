@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_views_link_cards",
+  "info": {
+    "displayName": "link-card",
+    "icon": "envelop"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "url": {
+      "type": "string"
+    },
+    "urlDescription": {
+      "type": "string"
+    },
+    "blue": {
+      "type": "boolean",
+      "default": false
+    },
+    "buttonCard": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_views_card_sections",
+  "info": {
+    "displayName": "card-section",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "cards": {
+      "type": "component",
+      "component": "views.link-card",
+      "repeatable": true
+    },
+    "showSecondaryButton": {
+      "type": "boolean",
+      "default": false
+    },
+    "secondaryButtonText": {
+      "type": "string"
+    },
+    "secondaryButtonUrl": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

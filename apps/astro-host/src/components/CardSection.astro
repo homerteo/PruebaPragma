@@ -1,0 +1,88 @@
+---
+import Card from './Card.astro';
+import type { CardItem } from '@bhd-test/shared-domain';
+
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  cards: CardItem[];
+  showSecondaryButton?: boolean;
+  secondaryButtonText?: string;
+  secondaryButtonUrl?: string;
+}
+
+const {
+  title,
+  subtitle: subTitle,
+  cards,
+  showSecondaryButton = false,
+  secondaryButtonText = 'Ver todos nuestros productos',
+  secondaryButtonUrl = '/productos',
+} = Astro.props;
+---
+
+<section class="px-4 md:px-0">
+  {
+    (title || subTitle) && (
+      <div class="mb-10 text-center flex flex-col items-center">
+        <div class="flex flex-col items-center w-full">
+          <div class="flex w-full flex-col gap-8 px-4 lg:px-0">
+            <div class="text-center">
+              {title && (
+                <h1 class="text-base sm:text-2xl font-medium text-gray-500">
+                  {title}
+                </h1>
+              )}
+              {subTitle && (
+                <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 leading-9">
+                  {subTitle}
+                </h2>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  <div
+    class="flex w-full flex-col items-center gap-4 md:grid md:grid-cols-2 md:items-start lg:grid-cols-3 lg:gap-6 xl:gap-4"
+  >
+    {
+      cards.map((card) => (
+        <div class="h-full w-full max-w-[368px] xxl:max-w-full">
+          <Card
+            icon={
+              card.icon
+                ? card.icon.url.startsWith('http')
+                  ? card.icon.url
+                  : `${import.meta.env.STRAPI_API_URL}${card.icon.url}`
+                : undefined
+            }
+            title={card.title}
+            description={card.description || ''}
+            url={card.url || '/'}
+            urlDescription={card.urlDescription || ''}
+            isBlue={card.blue}
+            buttonCard={card.buttonCard}
+          />
+        </div>
+      ))
+    }
+  </div>
+
+  {
+    showSecondaryButton && (
+      <div class="mt-10 flex w-full justify-center">
+        <button
+          type="button"
+          class="px-3 py-3 rounded-lg bg-white border-2 border-green-600 text-green-600 w-full overflow-hidden text-ellipsis max-w-[368px] xl:max-w-[400px] font-bold whitespace-nowrap hover:bg-green-50"
+          onclick={`location.href = '${secondaryButtonUrl}'`}
+        >
+          {secondaryButtonText}
+        </button>
+      </div>
+    )
+  }
+</section>

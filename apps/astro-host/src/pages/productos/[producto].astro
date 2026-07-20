@@ -1,0 +1,17 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from '../../layouts/Layout.astro';
+
+
+export async function getStaticPaths() {
+    const productos = await getCollection('producto');
+    return productos;
+}
+
+const { producto } = Astro.props;
+const { Content } = await render(producto);
+---
+
+<Layout>
+    <Content />
+</Layout>

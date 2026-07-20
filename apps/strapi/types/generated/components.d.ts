@@ -106,6 +106,64 @@ export interface SharedSeo extends Struct.ComponentSchema {
   };
 }
 
+export interface ViewsCardSection extends Struct.ComponentSchema {
+  collectionName: 'components_views_card_sections';
+  info: {
+    displayName: 'card-section';
+    icon: 'apps';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<'views.link-card', true>;
+    secondaryButtonText: Schema.Attribute.String;
+    secondaryButtonUrl: Schema.Attribute.String;
+    showSecondaryButton: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
+    subtitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ViewsContent extends Struct.ComponentSchema {
+  collectionName: 'components_views_contents';
+  info: {
+    displayName: 'content';
+    icon: 'code';
+  };
+  attributes: {
+    cardSection: Schema.Attribute.Component<'views.card-section', true>;
+    heroSection: Schema.Attribute.Component<'views.hero-section', false>;
+  };
+}
+
+export interface ViewsHeroSection extends Struct.ComponentSchema {
+  collectionName: 'components_views_hero_sections';
+  info: {
+    displayName: 'hero-section';
+  };
+  attributes: {
+    description: Schema.Attribute.Blocks;
+    image: Schema.Attribute.Media<'images' | 'files'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ViewsLinkCard extends Struct.ComponentSchema {
+  collectionName: 'components_views_link_cards';
+  info: {
+    displayName: 'link-card';
+    icon: 'envelop';
+  };
+  attributes: {
+    blue: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    buttonCard: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    description: Schema.Attribute.Text;
+    icon: Schema.Attribute.Media<'images' | 'files'>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    url: Schema.Attribute.String;
+    urlDescription: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
@@ -116,6 +174,10 @@ declare module '@strapi/strapi' {
       'navigation.menu-dropdown': NavigationMenuDropdown;
       'navigation.menu-item': NavigationMenuItem;
       'shared.seo': SharedSeo;
+      'views.card-section': ViewsCardSection;
+      'views.content': ViewsContent;
+      'views.hero-section': ViewsHeroSection;
+      'views.link-card': ViewsLinkCard;
     }
   }
 }

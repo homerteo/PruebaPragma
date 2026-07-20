@@ -1,7 +1,7 @@
 export interface MenuItem {
   id: string | number;
   label: string;
-  url?: string; 
+  url?: string;
   isExternal?: boolean;
   subItems?: MenuItem[];
 }
@@ -11,7 +11,7 @@ export interface NavigationResponse {
     id: number;
     attributes: {
       title: string;
-      items: Array<MenuLink | MenuDropdown>; 
+      items: Array<MenuLink | MenuDropdown>;
     };
   };
 }
@@ -91,15 +91,53 @@ export interface StrapiImage {
   height?: number;
 }
 
-export interface Page {
-  id: string | number;
-  title: string;
-  slug: string;
-  content: unknown;
-  seo?: SeoComponent;
-}
-
 export interface FooterResponse {
   name: string;
   Footer: Footer[];
+}
+
+export interface CardItem {
+  icon?: StrapiImage;
+  title: string;
+  description?: string;
+  url?: string;
+  urlDescription?: string;
+  blue?: boolean;
+  buttonCard?: boolean;
+}
+
+export interface CardSection {
+  title: string;
+  subtitle: string;
+  cards: CardItem[];
+  showSecondaryButton?: boolean;
+  secondaryButtonText?: string;
+  secondaryButtonUrl?: string;
+}
+
+export interface HeroSection {
+  title: string;
+  description: unknown;
+  image?: StrapiImage;
+}
+
+export interface Seo {
+  metaTitle: string;
+  metaDescription: string;
+  metaImage?: StrapiImage[];
+  keywords?: string;
+  canonicalURL: string;
+}
+
+export interface Page {
+  id: number;
+  title: string;
+  slug: string;
+  seo?: Seo;
+  content: {
+    id: number;
+    __component: string;
+    heroSection?: HeroSection;
+    cardSection?: CardSection[];
+  }[];
 }
