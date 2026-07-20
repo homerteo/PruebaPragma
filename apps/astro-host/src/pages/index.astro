@@ -32,12 +32,14 @@ const cardSections: CardSectionData[] = content?.cardSection ?? [];
 ---
 
 <Layout>
-	{hero && <Hero data={hero} />}
-	{
-		cardSections.map((section) => (
-			<div class="mx-auto mt-16 w-full max-w-7xl px-4 md:px-8 lg:mt-24 lg:px-10">
-				<CardSection {...section} />
-			</div>
-		))
-	}
+	<div class="mb-25">
+		{hero && <Hero data={hero} />}
+		{
+			cardSections.map((section) => (
+				<div class="mx-auto mt-16 w-full max-w-7xl px-4 md:px-8 lg:mt-24 lg:px-10">
+					<CardSection {...section} />
+				</div>
+			))
+		}
+	</div>
 </Layout>

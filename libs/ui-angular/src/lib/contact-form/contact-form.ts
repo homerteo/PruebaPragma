@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, inject } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -8,7 +8,7 @@ import {
 import { createCustomElement } from '@angular/elements';
 
 @Component({
-  selector: 'app-contact-form',
+  selector: 'lib-contact-form',
   standalone: true,
   imports: [ReactiveFormsModule],
   template: `
@@ -162,11 +162,8 @@ import { createCustomElement } from '@angular/elements';
 })
 export class ContactForm implements OnInit {
   contactForm!: FormGroup;
-
-  constructor(
-    private injector: Injector,
-    private fb: FormBuilder,
-  ) {}
+  private ingector = inject(Injector);
+  private fb = inject(FormBuilder);
 
   ngOnInit() {
     this.contactForm = this.fb.group({

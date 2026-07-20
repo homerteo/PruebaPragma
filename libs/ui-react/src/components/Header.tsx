@@ -8,10 +8,8 @@ export interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ logoUrl, menuItems, ctaUrl = '/hazte-cliente' }) => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | number | null>(null);
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const toggleDropdown = (id: string | number) => {
     setActiveDropdown(activeDropdown === id ? null : id);
